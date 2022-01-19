@@ -1,0 +1,8 @@
+dyld[27258]: Library not loaded: @executable_path/../Python3
+  Referenced from: /Users/tiho/Library/Application Support/pypoetry/venv/bin/python3
+  Reason: tried: '/Users/tiho/Library/Application Support/pypoetry/venv/bin/../Python3' (no such file), '/usr/local/lib/Python3' (no such file), '/usr/lib/Python3' (no such file)
+
+Traceback:
+
+  File "<stdin>", line 872, in main
+  File "<stdin>", line 505, in run

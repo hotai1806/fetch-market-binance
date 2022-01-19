@@ -1,0 +1,41 @@
+2022-01-18 16:36:12,846 | INFO | <Response [200]>
+2022-01-18 16:36:39,433 | INFO | <Response [200]>
+2022-01-18 16:36:41,914 | INFO | <Response [200]>
+2022-01-18 16:36:55,633 | INFO | <Response [200]>
+2022-01-18 22:49:08,465 | ERROR | Connection fails!
+2022-01-18 22:57:59,623 | ERROR | <sqlite3.Connection object at 0x101eeda80>
+2022-01-18 22:58:45,932 | ERROR | <sqlite3.Connection object at 0x103601a80>
+2022-01-18 23:02:43,480 | ERROR | <sqlite3.Connection object at 0x110448a80>
+2022-01-18 23:03:51,372 | ERROR | <sqlite3.Connection object at 0x103e8da80>
+2022-01-18 23:04:18,520 | ERROR | <sqlite3.Connection object at 0x1033f1a80>
+2022-01-18 23:07:16,288 | ERROR | <sqlite3.Connection object at 0x103b91a80>
+2022-01-18 23:11:42,330 | INFO | CONNECTION SUCCESS
+2022-01-18 23:11:42,330 | ERROR | <sqlite3.Connection object at 0x103e55a80>
+2022-01-18 23:12:56,452 | INFO | CONNECTION SUCCESS
+2022-01-18 23:16:06,408 | INFO | CONNECTION SUCCESS
+2022-01-18 23:16:06,409 | INFO | <built-in method commit of sqlite3.Connection object at 0x1034d4a80>
+2022-01-18 23:16:35,100 | INFO | CONNECTION SUCCESS
+2022-01-18 23:16:35,100 | INFO | <built-in method commit of sqlite3.Connection object at 0x101c39a80>
+2022-01-18 23:23:21,127 | INFO | CONNECTION SUCCESS
+2022-01-18 23:23:21,128 | INFO | <built-in method commit of sqlite3.Connection object at 0x105c68a80>
+2022-01-18 23:23:21,128 | INFO | <Response [200]>
+2022-01-18 23:24:44,136 | INFO | CONNECTION SUCCESS
+2022-01-18 23:24:44,137 | INFO | <built-in method commit of sqlite3.Connection object at 0x101594a80>
+2022-01-18 23:24:44,137 | INFO | <Response [200]>
+2022-01-18 23:26:14,780 | INFO | CONNECTION SUCCESS
+2022-01-18 23:26:14,789 | INFO | <built-in method commit of sqlite3.Connection object at 0x10594ca80>
+2022-01-18 23:26:14,790 | INFO | <Response [200]>
+2022-01-18 23:26:14,790 | INFO | 1.0091999999999999
+2022-01-18 23:26:14,790 | INFO | 10.091999999999999
+2022-01-18 23:27:44,093 | INFO | CONNECTION SUCCESS
+2022-01-18 23:27:44,094 | INFO | <built-in method commit of sqlite3.Connection object at 0x104fb8a80>
+2022-01-18 23:27:44,094 | INFO | <Response [200]>
+2022-01-18 23:27:58,505 | INFO | CONNECTION SUCCESS
+2022-01-18 23:27:58,506 | INFO | <built-in method commit of sqlite3.Connection object at 0x105a70a80>
+2022-01-18 23:27:58,506 | INFO | <Response [200]>
+2022-01-19 10:42:23,046 | INFO | CONNECTION SUCCESS
+2022-01-19 10:42:23,047 | INFO | <built-in method commit of sqlite3.Connection object at 0x1050003f0>
+2022-01-19 10:50:02,469 | INFO | CONNECTION SUCCESS
+2022-01-19 10:50:02,470 | INFO | <built-in method commit of sqlite3.Connection object at 0x103dbc3f0>
+2022-01-19 10:50:44,082 | INFO | CONNECTION SUCCESS
+2022-01-19 10:50:44,082 | INFO | <built-in method commit of sqlite3.Connection object at 0x1037663f0>
