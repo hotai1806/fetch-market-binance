@@ -9,7 +9,7 @@ from datetime import datetime
 
 def fetch_binance():
     '''
-    GET 10 transaction VND 
+    GET 10 transaction VND
     '''
     URLS = "https://p2p.binance.com/bapi/c2c/v2/friendly/c2c/adv/search"
     payload = {"page": 1, "rows": 10, "payTypes": [], "asset": "USDT", "tradeType": "BUY",
@@ -26,7 +26,7 @@ def fetch_binance():
 def setup_logging():
     # Handlers - Formats - Levels
     c_handler = logging.StreamHandler(sys.stdout)
-    f_handler = logging.FileHandler(" logs/" + datetime.day.getter)
+    f_handler = logging.FileHandler("appdata")
     log_format = logging.Formatter('%(asctime)s | %(levelname)s | %(message)s')
     c_handler.setFormatter(log_format)
     f_handler.setFormatter(log_format)
@@ -52,16 +52,17 @@ def setup_mysql(logger):
 
         cur = con.cursor()
         cur.execute('''create table if not exists transaction_records
-                    (id integer primary key autoincrement, 
+                    (id integer primary key autoincrement,
                     price_avg real,
-                    price_sum real, 
-                    time datetime default current_timestamp)   
+                    price_sum real,
+                    time datetime default current_timestamp)
                     ''')
 
         logger.info(con.commit)
         return con
     except sqlite3.Error as er:
         logger.error(er)
+        pass
 
     pass
 
@@ -76,7 +77,7 @@ def average(lst):
 def insertDB(conn, price_avg, price_sum):
     conn.execute(
             "insert into transaction_records(price_avg, price_sum) values (?,?)", (price_avg, price_sum))
-    conn.commit()
+    return conn.commit()
 
 
 
@@ -100,6 +101,7 @@ if __name__ == '__main__':
         insertDB(conn, price_avg, price_sum)
     else:
         logger.error(response)
+        pass
 
     pass
 
