@@ -1,17 +1,14 @@
-import logging
 import sqlite3
 import requests
-import sys
-from datetime import datetime
 
-#
+from log_helper import setup_logging
 
+URLS = "https://p2p.binance.com/bapi/c2c/v2/friendly/c2c/adv/search"
 
 def fetch_binance():
     '''
     GET 10 transaction VND
     '''
-    URLS = "https://p2p.binance.com/bapi/c2c/v2/friendly/c2c/adv/search"
     payload = {"page": 1, "rows": 10, "payTypes": [], "asset": "USDT", "tradeType": "BUY",
                "fiat": "VND", "publisherType": "merchant", "merchantCheck": True}
     headers = {
@@ -21,27 +18,7 @@ def fetch_binance():
 
     return response
 
-
-# LOGGING
-def setup_logging():
-    # Handlers - Formats - Levels
-    c_handler = logging.StreamHandler(sys.stdout)
-    f_handler = logging.FileHandler("appdata")
-    log_format = logging.Formatter('%(asctime)s | %(levelname)s | %(message)s')
-    c_handler.setFormatter(log_format)
-    f_handler.setFormatter(log_format)
-    c_handler.setLevel(logging.DEBUG)
-    f_handler.setLevel(logging.DEBUG)
-
-    # Define LOGGER
-    logger = logging.getLogger('APP')
-    logger.setLevel(logging.DEBUG)
-    logger.addHandler(c_handler)
-    logger.addHandler(f_handler)
-
-    return logger
-
-
+# TODO decorator
 def setup_mysql(logger):
     """
         Connect to database sqlite
@@ -62,9 +39,6 @@ def setup_mysql(logger):
         return con
     except sqlite3.Error as er:
         logger.error(er)
-        pass
-
-    pass
 
 
 def average(lst):
@@ -73,17 +47,18 @@ def average(lst):
     '''
     return sum(lst) / len(lst)
 
-
+# TODO add decorator
 def insertDB(conn, price_avg, price_sum):
     conn.execute(
             "insert into transaction_records(price_avg, price_sum) values (?,?)", (price_avg, price_sum))
     return conn.commit()
 
 
-
 if __name__ == '__main__':
     logger = setup_logging()
     conn = setup_mysql(logger=logger)
+    import pandas as pd
+    import matplotlib.pyplot as plt
 
 
     response = fetch_binance()
@@ -101,7 +76,15 @@ if __name__ == '__main__':
         insertDB(conn, price_avg, price_sum)
     else:
         logger.error(response)
-        pass
 
-    pass
+    # MATPLOT
+    df = pd.read_csv("./BTC-USD.csv")
+
+
+    df = df.dropna()
+
+
+    plt.plot(df['Date'] , df['Close'])
+    plt.show()
+
 
