@@ -65,12 +65,31 @@ def insertDB(conn, price_avg, price_sum):
         "insert into transaction_records(price_avg, price_sum) values (?,?)", (price_avg, price_sum))
     return conn.commit()
 
+def showingChart():
+    import pandas as pd
+    import matplotlib.pyplot as plt
+
+    header= ["id","avg-vnd","sum-vnd", "date"]
+    listBinanceVND = getBinanceVNDinDB(conn)
+    df = pd.DataFrame(data=listBinanceVND, columns=header)
+
+
+    df = df.dropna()
+    print(df)
+    print(df["date"])
+
+    plt.plot((df['date']), df['avg-vnd'], label='avg-vnd')
+    plt.xlabel("Time")
+    plt.ylabel("VND")
+
+    import matplotlib.dates as mdates
+
+    plt.gcf().autofmt_xdate()
+    plt.show()
 
 if __name__ == '__main__':
     logger = setup_logging()
     conn = setup_mysql(logger=logger)
-    import pandas as pd
-    import matplotlib.pyplot as plt
 
     response = fetch_binance()
     if response.ok:
@@ -89,20 +108,4 @@ if __name__ == '__main__':
 
     # MATPLOT
     # df = pd.read_csv("./BTC-USD.csv")
-    header= ["id","avg-vnd","sum-vnd", "date"]
-    listBinanceVND = getBinanceVNDinDB(conn)
-    df = pd.DataFrame(data=listBinanceVND, columns=header)
 
-
-    df = df.dropna()
-    print(df)
-    print(df["date"])
-
-    plt.plot((df['date']), df['avg-vnd'], label='avg-vnd')
-    plt.xlabel("Time")
-    plt.ylabel("VND")
-
-    import matplotlib.dates as mdates
-
-    plt.gcf().autofmt_xdate()
-    plt.show()
